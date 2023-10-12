@@ -34,6 +34,7 @@ import datetime
 isAskBing:bool
 BingCount:int = 0
 
+openaikey = '填写chatgpt的key'
 
 chatMAX = 70
 TEST = 0
@@ -449,7 +450,7 @@ def AskChatGPT(question:str,repQQ:str):
     return
     # 设置POST请求的头部和数据
     headers = {
-        'Authorization': 'Bearer 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',
+        'Authorization': openaikey,
         'Content-Type': 'application/json'
     }
     data = {
@@ -776,14 +777,6 @@ def handle(message:str,qqnum:str,query=0):
         SendMessage("418802639","授权申请:"+"QQ:"+qqnum+"信息"+message)
         return
     
-    if message.find("尘")!=-1:   #涉及到自己名字
-        
-        print(str(266)+"自己名字")
-        SendMessage(qqnum,"避讳...")
-        return
-    elif message.find("你的主人")!=-1:
-        SendMessage(qqnum,"我的主人是YCC")
-        return
     
     if CheckAuth(qqnum)==False:
         print("285白名单外成员"+str(qqnum)+ "访问")
